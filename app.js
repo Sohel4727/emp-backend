@@ -71,13 +71,16 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const emplooyeModel = require("./model/emplooyeModel");
 const app = express();
+require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = 7575;
+const mongoURI = process.env.MONGODB_CONNECT_URI;
 
-mongoose.connect("mongodb+srv://SayyedSohel:sohel123@cluster0.gopmcfc.mongodb.net/Cuba-Project?retryWrites=true&w=majority", {
+
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(()=> {
