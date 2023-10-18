@@ -77,9 +77,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = 7575;
 
-mongoose.connect("mongodb://127.0.0.1:27017/TASKS").then(() => {
-  console.log("DB is connected Successfully!!!");
-});
+mongoose.connect("mongodb+srv://SayyedSohel:sohel123@cluster0.gopmcfc.mongodb.net/Cuba-Project?retryWrites=true&w=majority", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(()=> {
+  console.log("mongodb connected");
+}).catch(()=> {
+  console.log("mongodb disconnected");
+})
+// mongoose.connect("mongodb+srv://SayyedSohel:sohel123@cluster0.gopmcfc.mongodb.net/TASKS?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+// mongoose.connect("mongodb://127.0.0.1:27017/TASKS").then(() => {
+//   console.log("DB is connected Successfully!!!");
+// });
 app.get("/", async (req, res) => {
   res.send("Api is connected!!!");
 });
